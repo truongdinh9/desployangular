@@ -1,0 +1,46 @@
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../auth/auth.service';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
+})
+export class RegisterComponent implements OnInit {
+  errorMessage = '';
+  isSignedUp = false;
+  isSignedUpFailed = false;
+  registerForm: FormGroup;
+
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder
+  ) {
+  }
+
+  ngOnInit() {
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      firsName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      birthDay: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const {value} = this.registerForm;
+      // @ts-ignore
+      this.authService.signUp(value).subscribe(next => {
+        this.isSignedUp = true;
+        this.isSignedUpFailed = false;
+      }, e => {
+        this.isSignedUpFailed = true;
+        this.errorMessage = e.error.errorMessage;
+      });
+    }
+
+  }
+}
