@@ -1,31 +1,97 @@
-<div *ngIf="isLoggedIn; else signinForm">
+<div *ngIf="isLoggedIn else signinForm">
   Logged in as {{roles}}.
 </div>
-<form #signinForm [formGroup]="loginForm" (ngSubmit)="onSubmit()" )>
-  <div>
-    Email
-    <br/>
-    <label>
-      <input type="email" class="form-control" formControlName="email">
-    </label>
+<ng-template #signinForm>
+  <div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!---heading---->
+      <header class="heading"> Login</header>
+      <hr>
+      <!---Form starting---->
+      <div class="row ">
+        <!--- For Name---->
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="username">Email :</label></div>
+            <div class="col-xs-8">
+              <input type="email" name="username" id="username" placeholder="Enter your User Name" class="form-control ">
+            </div>
+          </div>
+        </div>
+        <br><br><br>
+
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="password">Password :</label></div>
+            <div class="col-xs-8">
+              <input type="text" name="password" id="password" placeholder="Enter your Password" class="form-control" formControlName="email">
+            </div>
+          </div>
+        </div>
+
+        <br><br><br>
+
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="checkbox"></label></div>
+            <div class="col-xs-4">
+              <input type="checkbox" name="remember"> Remember Me
+            </div>
+          </div>
+        </div>
+
+        <br><br>
+
+        <div class="col-sm-12 offset-md-4">
+          <button type="submit" class="btn btn-primary">
+            Login
+          </button>
+        </div>
+
+        <div class="form-group ">
+          <div class="col-md-12 offset-md-4">
+            <div class="row">
+              <a href="#" class="btn btn-link">
+                Forgot Your Password?
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
-  <div *ngIf="loginForm.get('email').invalid&&loginForm.get('email').touched">
-    Email is required
-  </div>
-  <div>
-    Password
-    <br>
-    <label>
-      <input type="password" class="form-control" formControlName="password">
-    </label>
-  </div>
-  <div *ngIf="loginForm.get('password').invalid&&loginForm.get('password').touched">
-    Password is required and minlength is 6
-  </div>
-  <button class="btn btn-primary" type="submit">Submit</button>
-</form>
-<div *ngIf="isLogInFailed">
-  Email or password incorrect
-  <p>Don't have an account?</p>
-  <a href="signup" class="btn btn-success">Sign Up</a>
-</div>
+</ng-template>
+
+<!--<ng-template #signinForm>-->
+<!--<form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" >-->1
+<!--  <div>-->
+<!--    Email-->2
+<!--    <br/>-->
+<!--    <label>-->
+<!--      <input type="email" class="form-control" formControlName="email">-->
+<!--    </label>-->
+<!--  </div>-->
+<!--  <div *ngIf="loginForm.get('email').invalid&&loginForm.get('email').touched">-->
+<!--    Email is required-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    Password-->
+<!--    <br>-->
+<!--    <label>-->
+<!--      <input type="password" class="form-control" formControlName="password">-->
+<!--    </label>-->
+<!--  </div>-->
+<!--  <div *ngIf="loginForm.get('password').invalid&&loginForm.get('password').touched">-->
+<!--    Password is required and minlength is 6-->
+<!--  </div>-->
+<!--  <button class="btn btn-primary" type="submit">Submit</button>-->
+<!--</form>-->
+<!--<div *ngIf="isLogInFailed">-->
+<!--  Email or password incorrect-->
+<!--  <p>Don't have an account?</p>-->
+<!--  <a href="signup" class="btn btn-success">Sign Up</a>-->
+<!--</div>-->
+<!--</ng-template>-->
