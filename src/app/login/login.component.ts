@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private tokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
   }
 
@@ -38,10 +41,9 @@ export class LoginComponent implements OnInit {
         this.tokenStorageService.saveEmail(next.email);
         // @ts-ignore
         this.tokenStorageService.saveAuthor(next.authorities);
-
         this.isLoggedIn = true;
         this.roles = this.tokenStorageService.getAuthor();
-        console.log(this.roles);
+        this.router.navigate(['/home']);
       }, error => {
         this.isLogInFailed = true;
       });

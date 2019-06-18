@@ -10,7 +10,7 @@ Signed up successfully
       <input type="email" class="form-control" formControlName="email">
     </label>
   </div>
-  <div *ngIf="registerForm.get('email').invalid&&registerForm.get('email').touched">
+  <div *ngIf="registerForm.get('email').invalid&&registerForm.get('email').touched" >
     Email is required
   </div>
   <div>
