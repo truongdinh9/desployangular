@@ -16,15 +16,14 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      firsName: ['', [Validators.required, Validators.minLength(3)]],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
-      birthDay: ['', [Validators.required]],
+      birthday: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -33,14 +32,21 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       const {value} = this.registerForm;
       // @ts-ignore
-      this.authService.signUp(value).subscribe(next => {
+      const role = {role: ['user']};
+      // @ts-ignore
+      const signUpValue = {
+        ...value,
+        ...role
+      };
+      this.authService.signUp(signUpValue).subscribe(next => {
         this.isSignedUp = true;
         this.isSignedUpFailed = false;
       }, e => {
         this.isSignedUpFailed = true;
-        this.errorMessage = e.error.errorMessage;
+        this.errorMessage = e.messgae;
+        console.log(e);
+        console.log(signUpValue);
       });
     }
-
   }
 }

@@ -1,7 +1,8 @@
-<div *ngIf="isSignedUp; else signUpForm ">
+<div *ngIf="isSignedUp else signUpForm ">
 Signed up successfully
 </div>
-<form #signUpForm [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+<ng-template #signUpForm>
+<form  [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
   <div>
     Email
     <br/>
@@ -36,10 +37,10 @@ Signed up successfully
     Birth Day
     <br>
     <label>
-      <input type="text" class="form-control" formControlName="birthDay">
+      <input type="text" class="form-control" formControlName="birthday">
     </label>
   </div>
-  <div *ngIf="registerForm.get('birthDay').invalid&&registerForm.get('birthDay').touched">
+  <div *ngIf="registerForm.get('birthday').invalid&&registerForm.get('birthday').touched">
     Birth day is required
   </div>
   <div>
@@ -57,3 +58,4 @@ Signed up successfully
 <div *ngIf="isSignedUpFailed">
  Sign up fail:  {{errorMessage}}
 </div>
+</ng-template>

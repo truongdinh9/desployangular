@@ -16,11 +16,11 @@ export class AuthService {
   constructor( private http: HttpClient) { }
   private readonly LOGIN_URL = 'http://localhost:8080/api/auth/signin';
   private readonly SIGNUP_URL = 'http://localhost:8080/api/auth/signup';
-  attempAuth(credentials: LoginInfo): Observable<JwtResponse> {
+  attempAuth(credentials: any): Observable<JwtResponse> {
     // @ts-ignore
     return this.http.post<JwtResponse> (this.LOGIN_URL, credentials, HTTP_OPTIONS);
   }
-  signUp(info: SignupInfo): Observable<string> {
+  signUp(info: any): Observable<string> {
     // @ts-ignore
     return this.http.post<string>(this.SIGNUP_URL, info, HTTP_OPTIONS);
   }

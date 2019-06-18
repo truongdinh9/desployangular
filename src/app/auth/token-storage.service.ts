@@ -27,14 +27,14 @@ private roles: string[] = [];
   public getEmail(): string {
     return sessionStorage.getItem(EMAIL_KEY);
   }
-  public saveAuthor( author: string): void {
+  public saveAuthor( author: string[]): void {
     window.sessionStorage.removeItem(AUTHORITIES_KEY);
-    window.sessionStorage.setItem(AUTHORITIES_KEY, author);
+    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(author));
   }
   public getAuthor(): string[] {
     this.roles = [];
     if (sessionStorage.getItem(TOKEN_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority =>{
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
         this.roles.push(authority.authority);
       });
     }
