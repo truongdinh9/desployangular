@@ -2,7 +2,7 @@
 <!--  Signed up successfully-->
 <!--</div>-->
 <div class="background">
-  <div class="registerForm container">
+  <div class="container">
     <!---heading---->
     <header class="heading">Sign Up</header>
     <hr>
@@ -20,8 +20,6 @@
           </div>
         </div>
       </div>
-
-
       <div class="row">
         <div class="col-md-4">
           <label class="lastName">Last Name :</label></div>
@@ -33,7 +31,6 @@
           </div>
         </div>
       </div>
-
 
       <!-----For email---->
       <div class="row">
@@ -78,14 +75,12 @@
       <!-----------For Submit-------->
       <div class="row">
         <div class="col-md-12">
-          <div type="button" class="btn btn-warning" id="submit">Submit</div>
-          <div *ngIf="isSignedUpFailed">
+          <button type="submit" class="btn btn-warning" id="submit">Submit</button>
+          <div *ngIf="isSignedUpFailed" class="validate">
             Sign up fail:  {{errorMessage}}
           </div>
         </div>
       </div>
-
-
     </form>
   </div>
 </div>

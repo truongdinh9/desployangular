@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../common/auth/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
   }
 
@@ -26,7 +28,7 @@ export class RegisterComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
       birthday: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -43,9 +45,11 @@ export class RegisterComponent implements OnInit {
       this.authService.signUp(signUpValue).subscribe(next => {
         this.isSignedUp = true;
         this.isSignedUpFailed = false;
+        console.log('Signed in');
+        this.router.navigate(['/login']);
       }, e => {
         this.isSignedUpFailed = true;
-        this.errorMessage = e.messgae;
+        this.errorMessage = e;
         console.log(e);
         console.log(signUpValue);
       });
