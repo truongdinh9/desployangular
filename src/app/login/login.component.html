@@ -1,0 +1,58 @@
+<div class="background">
+  <div class="loginForm container">
+    <!---heading---->
+    <header class="heading"> Sign In</header>
+    <hr>
+    <!---Form starting---->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!--- For Name---->
+      <div class="row">
+        <div class="col-md-4">
+          <label class="email">Email :</label></div>
+        <div class="col-md-8">
+          <input type="text" placeholder="Enter your Email" class="form-control"
+                 formControlName="email">
+          <div *ngIf="loginForm.get('email').invalid&&loginForm.get('email').touched" class="validate">
+            Email is invalid
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label class="password">Password :</label></div>
+        <div class="col-md-8">
+          <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control"
+                 formControlName="password">
+          <div *ngIf="loginForm.get('password').invalid&&loginForm.get('password').touched" class="validate">
+            Password is required and minlength is 6
+          </div>
+        </div>
+
+      </div>
+
+      <!--        <div class="col-sm-12">-->
+      <!--          <div class="row">-->
+      <!--            <div class="col-xs-4">-->
+      <!--              <label class="checkbox"></label></div>-->
+      <!--            <div class="col-xs-4">-->
+      <!--              <input type="checkbox" name="remember"> Remember Me-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+
+      <div class="offset-md-4" style="text-align: left">
+        <button type="submit" class="btn btn-primary btnlogin">
+          Login
+        </button>
+      </div>
+      <div *ngIf="isLogInFailed" class="validate">
+        Email or password are incorrect
+        <p>Don't have an account?</p>
+        <a href="signup" class="btn btn-success">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>

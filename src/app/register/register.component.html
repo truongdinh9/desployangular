@@ -1,0 +1,61 @@
+<div *ngIf="isSignedUp else signUpForm ">
+  Signed up successfully
+</div>
+<ng-template #signUpForm>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      Email
+      <br/>
+      <label>
+        <input type="email" class="form-control" formControlName="email">
+      </label>
+    </div>
+    <div *ngIf="registerForm.get('email').invalid&&registerForm.get('email').touched">
+      Email is required
+    </div>
+    <div>
+      First Name
+      <br>
+      <label>
+        <input type="text" class="form-control" formControlName="firstName">
+      </label>
+    </div>
+    <div *ngIf="registerForm.get('firstName').invalid&&registerForm.get('firstName').touched">
+      First Name is required and min length is 3
+    </div>
+    <div>
+      LastName
+      <br>
+      <label>
+        <input type="text" class="form-control" formControlName="lastName">
+      </label>
+    </div>
+    <div *ngIf="registerForm.get('lastName').invalid&&registerForm.get('lastName').touched">
+      Last Name is required and min length is 3
+    </div>
+    <div>
+      Birth Day
+      <br>
+      <label>
+        <input type="text" class="form-control" formControlName="birthday">
+      </label>
+    </div>
+    <div *ngIf="registerForm.get('birthday').invalid&&registerForm.get('birthday').touched">
+      Birth day is required
+    </div>
+    <div>
+      Password
+      <br>
+      <label>
+        <input type="password" class="form-control" formControlName="password">
+      </label>
+    </div>
+    <div *ngIf="registerForm.get('password').invalid&&registerForm.get('password').touched">
+      Password is required and minlength is 6
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+  <div *ngIf="isSignedUpFailed">
+    Sign up fail:  {{errorMessage}}
+  </div>
+</ng-template>
