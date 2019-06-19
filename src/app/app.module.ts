@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
-import {httpInterceptorProviders} from './auth/auth-interceptor';
+import {httpInterceptorProviders} from './common/auth/auth-interceptor';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {JwtResponse} from './jwt-response';
+import {JwtResponse} from '../jwt/jwt-response';
 
 const HTTP_OPTIONS = {
   header: new HttpHeaders({'Content-Type': 'application/json'})

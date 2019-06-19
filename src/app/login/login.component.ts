@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../auth/auth.service';
-import {TokenStorageService} from '../auth/token-storage.service';
+import {AuthService} from '../common/auth/auth.service';
+import {TokenStorageService} from '../common/token/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-    // this.roles = this.tokenStorageService.getAuthor();
   }
 
   onSubmit() {
