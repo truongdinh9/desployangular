@@ -39,19 +39,27 @@
       <!--            </div>-->
       <!--          </div>-->
       <!--        </div>-->
-
-      <div class="offset-md-4" style="text-align: left">
-        <button type="submit" class="btn btn-primary btnlogin">
-          Login
-        </button>
+      <div class="offset-md-4">
+        <div *ngIf="isLogInFailed" class="loginfail">
+          Email or password is incorrect
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="button-login">
+              <button type="submit" class="btn btn-primary btnlogin">
+                Login
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="isLogInFailed">
+            <div class="button-signup">
+              <button type="submit" class="btn btn-success" [routerLink]="['/signup']">
+                SignUp
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div *ngIf="isLogInFailed" class="validate">
-        Email or password are incorrect
-        <p>Don't have an account?</p>
-        <a href="signUp" class="btn btn-success">Sign Up</a>
-      </div>
-
-
     </form>
   </div>
 </div>

@@ -75,7 +75,9 @@
       <!-----------For Submit-------->
       <div class="row">
         <div class="col-md-12">
-          <button type="submit" class="btn btn-warning" id="submit">Submit</button>
+          <div id="button-register">
+            <button type="submit" class="btn btn-warning">Register</button>
+          </div>
           <div *ngIf="isSignedUpFailed" class="validate">
             Sign up fail:  {{errorMessage}}
           </div>

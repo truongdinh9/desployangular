@@ -19,7 +19,6 @@
   text-align: center;
   opacity: 0.8;
   margin-top: 67px;
-  box-shadow: 2px 5px 5px 0px #080808;
   max-width: 500px;
   padding-top: 10px;
   height: 363px;
@@ -33,27 +32,30 @@
   font-family: sans-serif;
   font-size: 14px;
   color: white;
-  margin-left: 1px;
+  margin-left:1px;
   margin-top: 15px;
+  text-align: left;
 }
 
 #email {
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 
 /*---for password-----*/
 
 .password {
-  margin-left: 1px;
+  margin-left: 10px;
   font-family: sans-serif;
   color: white;
   font-size: 14px;
   margin-top: 15px;
+  text-align: left;
+
 }
 
 #password {
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 /*---for heading-----*/
@@ -85,12 +87,12 @@
   color: black;
 }
 
-.btn-primary:hover {
-  box-shadow: 2px 1px 2px 3px #99ccff;
-  background: #5900a6;
-  color: red;
-  transition: background-color 1.15s ease-in-out, border-color 1.15s ease-in-out, box-shadow 1.15s ease-in-out;
-}
+//.btn-primary:hover {
+//  box-shadow: 2px 1px 2px 3px #99ccff;
+//  background: #5900a6;
+//  color: red;
+//  transition: background-color 1.15s ease-in-out, border-color 1.15s ease-in-out, box-shadow 1.15s ease-in-out;
+//}
 
 .validate {
   color: red;
@@ -103,8 +105,20 @@
   padding-bottom: 3px;
 }
 
-.btnlogin {
-  text-align: left;
-  margin-top: 5px;
-  margin-left: 4%;
+.loginfail {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 10px;
+  color: red;
+  background-color: antiquewhite;
+  text-align: center;
+  margin-left: 3%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.button-login {
+  padding: 10px 50px 0px 0px ;
+}
+.button-signup {
+  padding: 7px 0px 0px 60px;
 }
