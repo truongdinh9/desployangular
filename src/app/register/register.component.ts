@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   isSignedUp = false;
   isSignedUpFailed = false;
   registerForm: FormGroup;
+  signUpForm: any;
 
   constructor(
     private authService: AuthService,
